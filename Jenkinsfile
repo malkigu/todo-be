@@ -25,7 +25,7 @@ pipeline {
          stage('Push') {
             steps {
                 echo 'pushing to dockerhub....'
-                sh 'docker login -u ${CREDS_USR} -p ${CREDS_PS'}'
+                sh 'docker login -u ${CREDS_USR} -p ${CREDS_PS}'
                 sh 'docker push malkigu/todo-be:latest'
             }
         }
