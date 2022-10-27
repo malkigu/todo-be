@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        CREDS = credentials('jenkins-user-for-artifact-repository')
+    }
     stages {
         stage('Build') {
             steps {
@@ -23,7 +25,7 @@ pipeline {
          stage('Push') {
             steps {
                 echo 'pushing to dockerhub....'
-                sh 'docker login -u malkigu -p Mg14102001'
+                sh 'docker login -u ${CREDS_USR} -p ${CREDS_PS'}'
                 sh 'docker push malkigu/todo-be:latest'
             }
         }
